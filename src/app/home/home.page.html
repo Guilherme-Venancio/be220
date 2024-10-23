@@ -52,16 +52,16 @@
     <h6><ion-icon class="icon-circle" name="add-outline"></ion-icon></h6>
   </ion-item>
   <swiper-container [slidesPerView]="1.4" [spaceBetween]="16" class="ion-padding">
-    <ion-item class="absolute-slide new" lines="none">
-      <ion-icon class="icon-circle-white" name="add-outline"></ion-icon>
-      <ion-text>NOVO <br> TREINO</ion-text>
-    </ion-item>
     <ng-container *ngIf="!personals.length">
       <swiper-slide *ngFor="let skeletonPersonal of skeletonPersonals">
         <ion-skeleton-text class="card-slide" [animated]="true" style="width: 100%;"></ion-skeleton-text>
       </swiper-slide>
     </ng-container>
     <swiper-slide *ngFor="let personal of personals; let key = index">
+      <ion-item class="absolute-slide new" lines="none" *ngIf="key === 0">
+        <ion-icon class="icon-circle-white" name="add-outline"></ion-icon>
+        <ion-text>NOVO <br> TREINO</ion-text>
+      </ion-item>
       <ion-card class="card-slide" [ngStyle]="{'background-image': 'url('+personal.img+')'}">
         <ion-item class="absolute-slide continue" *ngIf="key > 0" lines="none">
           <h4>{{ personal.label }}</h4>
