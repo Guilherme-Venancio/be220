@@ -1,0 +1,106 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu exemplo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">Menu exemplo.</ion-content>
+</ion-menu>
+<ion-header class="header-home">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Logo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon class="icon-notifications" name="notifications"></ion-icon>
+        <span *ngIf="notification" class="notification">•</span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-item lines="none" mode="ios" class="ion-padding">
+    <ion-avatar class="avatar-user" slot="start">
+      <ion-img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
+    <ion-label *ngIf="user">
+      <h4>{{user.name}}</h4>
+      <ion-note [ngStyle]="{'color': user.colorLevel}" style="font-size: 0.7rem">Nível {{user.level}}</ion-note>
+    </ion-label>
+    <ion-label *ngIf="!user">
+      <h4><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></h4>
+      <ion-note style="font-size: 0.7rem"><ion-skeleton-text [animated]="true"
+          style="width: 20%;"></ion-skeleton-text></ion-note>
+    </ion-label>
+  </ion-item>
+  <ion-row class="row-button-header">
+    <ion-chip>
+      <ion-label>
+        <ion-icon class="icon-circle" name="body"></ion-icon>
+        MEU CORPO
+      </ion-label>
+      <ion-label>
+        <ion-icon class="icon-circle" name="trophy"></ion-icon>
+        OBJETIVOS E CONQUISTAS
+      </ion-label>
+    </ion-chip>
+  </ion-row>
+</ion-header>
+<ion-content class="ion-padding" id="main-content">
+  <ion-item lines="none" class="title-section">
+    <h2 slot="start">PERSONAL ONLINE</h2>
+    <h6><ion-icon class="icon-circle" name="add-outline"></ion-icon></h6>
+  </ion-item>
+  <swiper-container [slidesPerView]="1.4" [spaceBetween]="16" class="ion-padding">
+    <ion-item class="absolute-slide new" lines="none">
+      <ion-icon class="icon-circle-white" name="add-outline"></ion-icon>
+      <ion-text>NOVO <br> TREINO</ion-text>
+    </ion-item>
+    <ng-container *ngIf="!personals.length">
+      <swiper-slide *ngFor="let skeletonPersonal of skeletonPersonals">
+        <ion-skeleton-text class="card-slide" [animated]="true" style="width: 100%;"></ion-skeleton-text>
+      </swiper-slide>
+    </ng-container>
+    <swiper-slide *ngFor="let personal of personals; let key = index">
+      <ion-card class="card-slide" [ngStyle]="{'background-image': 'url('+personal.img+')'}">
+        <ion-item class="absolute-slide continue" *ngIf="key > 0" lines="none">
+          <h4>{{ personal.label }}</h4>
+        </ion-item>
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+
+  <ion-item lines="none" class="title-section">
+    <h2 slot="start">Programas</h2>
+    <h6 class="icon-circle label-new">NOVO</h6>
+  </ion-item>
+  <swiper-container [slidesPerView]="1.4" [spaceBetween]="16" class="ion-padding">
+    <ng-container *ngIf="!personals.length">
+      <swiper-slide *ngFor="let skeletonPersonal of skeletonPersonals">
+        <ion-skeleton-text class="card-slide" [animated]="true" style="width: 100%;"></ion-skeleton-text>
+      </swiper-slide>
+    </ng-container>
+    <swiper-slide *ngFor="let personal of personals; let key = index ">
+      <ion-card class="card-slide show" [ngStyle]="{'background-image': 'url('+personal.img+')'}">
+        <ion-item class="absolute-slide continue" lines="none">
+          <ion-label>
+            <h6 *ngIf="key === 0">Continuar Treinando</h6>
+            <h4>{{ personal.label }}</h4>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+
+  <ion-item lines="none" class="title-section">
+    <h2 slot="start">Conteúdos</h2>
+  </ion-item>
+  <swiper-container [slidesPerView]="1.4" [spaceBetween]="16" class="ion-padding">
+    <swiper-slide *ngFor="let content of contents">
+      <ion-card class="card-conteudo">
+        <img [src]="content" alt="">
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+
+</ion-content>

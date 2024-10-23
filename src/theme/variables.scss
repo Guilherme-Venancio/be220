@@ -1,0 +1,70 @@
+:root {
+    --ion-background-color: #090909;
+    --ion-item-color: white;
+    --ion-toolbar-color: white;
+    --ion-text-color: white;
+    --color: white;
+    --ion-font-family: 'Bebas Neue';
+}
+
+body {
+    font-weight: bolder !important;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-right: 8px;
+}
+
+h2 {
+    font-size: 28px !important;
+}
+h4 {
+    font-size: 20px !important;
+}
+
+h5 {
+    font-size: 16px !important;
+}
+
+h6 {
+    font-size: 12px !important;
+    color: #e57c09;
+}
+
+.ion-padding {
+    --padding-start: var(--ion-padding, 16px);
+    --padding-end: var(--ion-padding, 16px);
+    --padding-top: var(--ion-padding, 8px);
+    --padding-bottom: var(--ion-padding, 8px);
+    padding-inline-start: var(--ion-padding, 16px);
+    padding-inline-end: var(--ion-padding, 16px);
+    padding-top: var(--ion-padding, 8px);
+    padding-bottom: var(--ion-padding, 8px);
+}
+
+ion-header {
+    border-radius: 10% 10% 11% 11% / 0% 1% 22% 22%;
+    background: #202020 !important;
+    padding: 6px;
+}
+
+ion-content {
+    padding: 6px;
+}
+
+ion-skeleton-text {
+    --background-rgb: 253, 253, 253;
+    filter: none !important;
+    box-shadow: none !important;
+}
+
+ion-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease-in-out;
+}
